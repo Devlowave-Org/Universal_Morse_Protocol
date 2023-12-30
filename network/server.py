@@ -25,6 +25,11 @@ class Server:
         """
         error = False
         while not error:
+            print("Waiting for a client")
             clientsocket, clientaddress = self.server.accept()
             Thread(target=client_handshake, args=(clientsocket, clientaddress)).start()
 
+
+if __name__ == "__main__":
+    serv = Server(62626)
+    serv.main_listen_loop()
